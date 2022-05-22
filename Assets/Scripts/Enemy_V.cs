@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Enemy_V : MonoBehaviour
 {
-    
     private enum ESpanwPosition
     {
         TOP,
         BOTTOM,
     }
+
     [SerializeField]
     ESpanwPosition sp;
 
@@ -58,11 +58,7 @@ public class Enemy_V : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            gameObject.SetActive(false);
-        }
-        else if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
         {
             gameObject.SetActive(false);
         }

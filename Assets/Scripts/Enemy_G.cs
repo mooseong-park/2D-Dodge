@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy_G : MonoBehaviour
 {
     Rigidbody2D rb;
-    Transform target;
+    public Transform target;
 
     [SerializeField]
     float moveSpeed = 3f;
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
         }

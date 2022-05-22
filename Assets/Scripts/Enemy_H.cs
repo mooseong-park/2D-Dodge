@@ -57,11 +57,7 @@ public class Enemy_H : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            gameObject.SetActive(false);
-        }
-        else if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
         {
             gameObject.SetActive(false);
         }

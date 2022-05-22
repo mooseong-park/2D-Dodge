@@ -1997,8 +1997,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Enemy
-    prefab: {fileID: 3987062085914977560, guid: 23c29a205cb1049c3af9d031410d34ed, type: 3}
+  - tag: Enemy_G
+    prefab: {fileID: 3987062085914977560, guid: 3bca3c888f2a44738bc403a4ea06eb08, type: 3}
     size: 50
   - tag: Enemy_V
     prefab: {fileID: 3987062085914977560, guid: 7eb5bb19ea9a448da9713fc82dc557b2, type: 3}
@@ -2006,6 +2006,12 @@ MonoBehaviour:
   - tag: Enemy_H
     prefab: {fileID: 3987062085914977560, guid: cd29f6ee4f9ac466e9199b7b28602cb8, type: 3}
     size: 50
+  - tag: Item_A
+    prefab: {fileID: 3987062085914977560, guid: 57e296b996b064ef499a82fe3ae54737, type: 3}
+    size: 30
+  - tag: Item_Bomb
+    prefab: {fileID: 1460409381380725672, guid: 62f00b28154e542ce8fd59c7a85f1d81, type: 3}
+    size: 2
 --- !u!4 &1009088769
 Transform:
   m_ObjectHideFlags: 0
@@ -3618,6 +3624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480105922}
   - component: {fileID: 1480105921}
+  - component: {fileID: 1480105923}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: GameController
@@ -3639,42 +3646,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Row Bottom
-    enemy: {fileID: 3489653029804323711, guid: 7eb5bb19ea9a448da9713fc82dc557b2, type: 3}
     EState: 2
     count: 1
     rate: 3
   - name: Row TandB
-    enemy: {fileID: 3489653029804323711, guid: 7eb5bb19ea9a448da9713fc82dc557b2, type: 3}
     EState: 3
     count: 1
     rate: 3
   - name: Row Top
-    enemy: {fileID: 3489653029804323711, guid: 7eb5bb19ea9a448da9713fc82dc557b2, type: 3}
     EState: 1
     count: 1
     rate: 3
   - name: Random
-    enemy: {fileID: 3489653029804323711, guid: 23c29a205cb1049c3af9d031410d34ed, type: 3}
     EState: 0
     count: 15
     rate: 9
   - name: Column Left
-    enemy: {fileID: 3489653029804323711, guid: cd29f6ee4f9ac466e9199b7b28602cb8, type: 3}
     EState: 4
     count: 1
     rate: 3
   - name: Column Right
-    enemy: {fileID: 3489653029804323711, guid: cd29f6ee4f9ac466e9199b7b28602cb8, type: 3}
     EState: 5
     count: 1
     rate: 3
   - name: Column RandL
-    enemy: {fileID: 3489653029804323711, guid: cd29f6ee4f9ac466e9199b7b28602cb8, type: 3}
     EState: 6
     count: 1
     rate: 3
   - name: Rectangle
-    enemy: {fileID: 3489653029804323711, guid: 23c29a205cb1049c3af9d031410d34ed, type: 3}
     EState: 7
     count: 1
     rate: 1
@@ -3828,6 +3827,156 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1480105923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480105920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d18d8dc1c624a6ea499b6eecb70c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - item: {fileID: 3489653029804323711, guid: 57e296b996b064ef499a82fe3ae54737, type: 3}
+  spawnPoints:
+  - {fileID: 1756056364}
+  - {fileID: 1527320586}
+  - {fileID: 1279949680}
+  - {fileID: 744068483}
+  - {fileID: 1232461596}
+  - {fileID: 1021059863}
+  - {fileID: 1207633766}
+  - {fileID: 847487150}
+  - {fileID: 390012020}
+  - {fileID: 1808463823}
+  - {fileID: 296543045}
+  - {fileID: 1348575865}
+  - {fileID: 127852481}
+  - {fileID: 2065387573}
+  - {fileID: 1649663771}
+  - {fileID: 1480619332}
+  - {fileID: 1343793180}
+  - {fileID: 1293836436}
+  - {fileID: 1229078693}
+  - {fileID: 1654728919}
+  - {fileID: 534185719}
+  - {fileID: 1870446723}
+  - {fileID: 1165745354}
+  - {fileID: 724414354}
+  - {fileID: 398982812}
+  - {fileID: 2118390412}
+  - {fileID: 109040827}
+  - {fileID: 1253454013}
+  - {fileID: 1822112955}
+  - {fileID: 1053921617}
+  - {fileID: 444169071}
+  - {fileID: 2116831984}
+  - {fileID: 1615049073}
+  - {fileID: 504697920}
+  - {fileID: 1414457508}
+  - {fileID: 917300881}
+  - {fileID: 1144844445}
+  - {fileID: 1172573326}
+  - {fileID: 1127506115}
+  - {fileID: 1832392720}
+  - {fileID: 1369579982}
+  - {fileID: 1293902196}
+  - {fileID: 1040057845}
+  - {fileID: 1720554025}
+  - {fileID: 1878265890}
+  - {fileID: 713801606}
+  - {fileID: 773408594}
+  - {fileID: 1949467121}
+  - {fileID: 1971846303}
+  - {fileID: 1450992231}
+  - {fileID: 2124120921}
+  - {fileID: 211813244}
+  - {fileID: 2101551603}
+  - {fileID: 124657778}
+  - {fileID: 1317473325}
+  - {fileID: 731892691}
+  - {fileID: 548798848}
+  - {fileID: 2123137421}
+  - {fileID: 496061211}
+  - {fileID: 1030995147}
+  - {fileID: 1851522294}
+  - {fileID: 2083503685}
+  - {fileID: 1897284900}
+  - {fileID: 582976018}
+  - {fileID: 1659752017}
+  - {fileID: 68101507}
+  - {fileID: 971012846}
+  - {fileID: 1798239551}
+  - {fileID: 780673236}
+  - {fileID: 1980082247}
+  - {fileID: 1541286262}
+  - {fileID: 714253387}
+  - {fileID: 43125044}
+  - {fileID: 1931595982}
+  - {fileID: 2053855801}
+  - {fileID: 982823849}
+  - {fileID: 489020366}
+  - {fileID: 422209284}
+  - {fileID: 1924950776}
+  - {fileID: 1801862754}
+  - {fileID: 452084582}
+  - {fileID: 377688117}
+  - {fileID: 124353007}
+  - {fileID: 1315534406}
+  - {fileID: 590078780}
+  - {fileID: 803880252}
+  - {fileID: 1779117793}
+  - {fileID: 451954890}
+  - {fileID: 490474989}
+  - {fileID: 1378886717}
+  - {fileID: 687282533}
+  - {fileID: 1920252195}
+  - {fileID: 1091306527}
+  - {fileID: 1058733065}
+  - {fileID: 2091627706}
+  - {fileID: 1339658117}
+  - {fileID: 612932451}
+  - {fileID: 140232164}
+  - {fileID: 1169069056}
+  - {fileID: 166553556}
+  - {fileID: 136312938}
+  - {fileID: 872142417}
+  - {fileID: 594767040}
+  - {fileID: 761066989}
+  - {fileID: 1347099328}
+  - {fileID: 1813757903}
+  - {fileID: 747900695}
+  - {fileID: 977290772}
+  - {fileID: 2089387286}
+  - {fileID: 1576878218}
+  - {fileID: 365748309}
+  - {fileID: 1236898973}
+  - {fileID: 340055689}
+  - {fileID: 423013581}
+  - {fileID: 1202476240}
+  - {fileID: 38620283}
+  - {fileID: 1077987323}
+  - {fileID: 1644215824}
+  - {fileID: 891101251}
+  - {fileID: 1508584575}
+  - {fileID: 1310622967}
+  - {fileID: 794216142}
+  - {fileID: 166057854}
+  - {fileID: 1295359315}
+  - {fileID: 1510402888}
+  - {fileID: 1842220186}
+  - {fileID: 1415086154}
+  - {fileID: 1032699045}
+  - {fileID: 1803885338}
+  - {fileID: 137055374}
+  - {fileID: 1435931864}
+  - {fileID: 1832102628}
+  - {fileID: 1633372008}
+  itemSpawnCountdown: 1
+  spawnItemIndex: 0
 --- !u!1 &1480619331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4773,7 +4922,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
