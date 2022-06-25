@@ -2009,9 +2009,15 @@ MonoBehaviour:
   - tag: Item_A
     prefab: {fileID: 3987062085914977560, guid: 57e296b996b064ef499a82fe3ae54737, type: 3}
     size: 30
+  - tag: Item_B
+    prefab: {fileID: 3987062085914977560, guid: 32bf8a8c4021b42648b0d80981d3842f, type: 3}
+    size: 20
   - tag: Item_Bomb
     prefab: {fileID: 1460409381380725672, guid: 62f00b28154e542ce8fd59c7a85f1d81, type: 3}
     size: 2
+  - tag: Item_HMissile
+    prefab: {fileID: 3721346575834445071, guid: c25dac0b3430744bf9ad0e852ac91ff3, type: 3}
+    size: 20
 --- !u!4 &1009088769
 Transform:
   m_ObjectHideFlags: 0
@@ -3659,7 +3665,7 @@ MonoBehaviour:
     rate: 3
   - name: Random
     EState: 0
-    count: 15
+    count: 5
     rate: 9
   - name: Column Left
     EState: 4
@@ -3673,10 +3679,6 @@ MonoBehaviour:
     EState: 6
     count: 1
     rate: 3
-  - name: Rectangle
-    EState: 7
-    count: 1
-    rate: 1
   nextWave: 0
   spawnPoints:
   - {fileID: 1756056364}
@@ -3840,7 +3842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 3489653029804323711, guid: 57e296b996b064ef499a82fe3ae54737, type: 3}
+  - {fileID: 3489653029804323711, guid: 57e296b996b064ef499a82fe3ae54737, type: 3}
+  - {fileID: 3489653029804323711, guid: 32bf8a8c4021b42648b0d80981d3842f, type: 3}
   spawnPoints:
   - {fileID: 1756056364}
   - {fileID: 1527320586}
@@ -4874,7 +4877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855218174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.98, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}

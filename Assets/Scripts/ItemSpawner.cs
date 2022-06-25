@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [System.Serializable]
-    public class Items
-    {
-        public Transform item;
-    }
+    //[System.Serializable]
+    //public class Items
+    //{
+    //    public Transform item;
+    //}
 
-    public Items[] items;
+    public Transform[] items;
     public Transform[] spawnPoints;
     public float itemSpawnCountdown = 1f;
     public int spawnItemIndex;
@@ -25,8 +25,8 @@ public class ItemSpawner : MonoBehaviour
     {
         if(itemSpawnCountdown <= 0)
         {
-            spawnItemIndex = Random.Range(0, 1);
-            SpawnItem(items[spawnItemIndex]);
+            spawnItemIndex = Random.Range(0, items.Length);
+            SpawnItem(spawnItemIndex);
             itemSpawnCountdown = Random.Range(3, 5);
         }
 
@@ -36,9 +36,18 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
-    void SpawnItem (Items _items)
+    void SpawnItem(int _items)
     {
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        ObjectPooler.SpawnFromPool<Item_A>("Item_A", _sp.position, _sp.rotation);
+
+        switch(_items)
+        {
+            case 0:
+                ObjectPooler.SpawnFromPool<Item_A>("Item_A", _sp.position, _sp.rotation);
+                break;
+            case 1:
+                ObjectPooler.SpawnFromPool<Item_B>("Item_B", _sp.position, _sp.rotation);
+                break;
+        }
     }
 }

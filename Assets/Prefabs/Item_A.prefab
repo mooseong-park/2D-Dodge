@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6371735067721131329}
   m_Layer: 6
   m_Name: Item_A
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,5 +139,4 @@ MonoBehaviour:
   randomX: 0
   randomY: 0
   lastVeloctiy: {x: 0, y: 0}
-  Item_Bomb: {fileID: 1460409381380725672, guid: 62f00b28154e542ce8fd59c7a85f1d81, type: 3}
   itemA: {fileID: 3489653029804323711}

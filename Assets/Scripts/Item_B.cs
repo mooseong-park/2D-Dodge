@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_A : MonoBehaviour
+public class Item_B : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 0.6f;
     public float randomX, randomY;
     public Vector2 lastVeloctiy;
-    public Transform itemA;
-    
+    public Transform itemB;
+
     void Start()
     {
         #region Random Move
@@ -38,7 +38,11 @@ public class Item_A : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             gameObject.SetActive(false);
-            ObjectPooler.SpawnFromPool<Item_Bomb>("Item_Bomb", itemA.position);
+            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
+            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
+            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
+            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
+            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
         }
         #endregion
     }
