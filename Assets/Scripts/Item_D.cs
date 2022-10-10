@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
-public class Item_B : MonoBehaviour
+public class Item_D : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 0.6f;
     public float randomX, randomY;
-    public Vector2 lastVelocity;
-    public Transform itemB;
+    public Vector2 lastVeloctiy;
+    public Transform itemA;
 
     void Start()
     {
@@ -24,7 +23,7 @@ public class Item_B : MonoBehaviour
 
     void Update()
     {
-        lastVelocity = rb.velocity;
+        lastVeloctiy = rb.velocity;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -32,12 +31,8 @@ public class Item_B : MonoBehaviour
         #region Player Collision
         if (collision.gameObject.name == "Player")
         {
+            PlayerController.modeTrigger = true;
             gameObject.SetActive(false);
-            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
-            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
-            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
-            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
-            ObjectPooler.SpawnFromPool<Item_HMissile>("Item_HMissile", itemB.position);
         }
         #endregion
     }
@@ -45,8 +40,8 @@ public class Item_B : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         #region Reflection
-        var speed = lastVelocity.magnitude;
-        var dir = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
+        var speed = lastVeloctiy.magnitude;
+        var dir = Vector2.Reflect(lastVeloctiy.normalized, collision.contacts[0].normal);
         rb.velocity = dir * Mathf.Max(speed, 0f);
         #endregion
     }

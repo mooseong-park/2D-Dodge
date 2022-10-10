@@ -26,20 +26,23 @@ public class Item_A : MonoBehaviour
         lastVeloctiy = rb.velocity;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        #region Reflection
-        var speed = lastVeloctiy.magnitude;
-        var dir = Vector2.Reflect(lastVeloctiy.normalized, collision.contacts[0].normal);
-        rb.velocity = dir * Mathf.Max(speed, 0f);
-        #endregion
-
         #region Player Collision
         if (collision.gameObject.name == "Player")
         {
             gameObject.SetActive(false);
             ObjectPooler.SpawnFromPool<Item_Bomb>("Item_Bomb", itemA.position);
         }
+        #endregion
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        #region Reflection
+        var speed = lastVeloctiy.magnitude;
+        var dir = Vector2.Reflect(lastVeloctiy.normalized, collision.contacts[0].normal);
+        rb.velocity = dir * Mathf.Max(speed, 0f);
         #endregion
     }
 

@@ -19,7 +19,7 @@ public class Item_Bomb : MonoBehaviour
 
     IEnumerator Bomb()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
     }
 

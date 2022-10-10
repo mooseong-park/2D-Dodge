@@ -48,6 +48,12 @@ public class ItemSpawner : MonoBehaviour
             case 1:
                 ObjectPooler.SpawnFromPool<Item_B>("Item_B", _sp.position, _sp.rotation);
                 break;
+            case 2:
+                ObjectPooler.SpawnFromPool<Item_C>("Item_C", _sp.position, _sp.rotation);
+                break;
+            case 3:
+                ObjectPooler.SpawnFromPool<Item_D>("Item_D", _sp.position, _sp.rotation);
+                break;
         }
     }
 }

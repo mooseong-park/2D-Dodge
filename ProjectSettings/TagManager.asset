@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Wall
   - Item_Effect
+  - Item_C
+  - Border
+  - Super
   layers:
   - Default
   - TransparentFX

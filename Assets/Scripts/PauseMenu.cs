@@ -33,6 +33,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if(GameController.instance.gamePlaying == false)
+        {
+            return;
+        }
+
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
