@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Item_D : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class Item_D : MonoBehaviour
     public float moveSpeed = 0.6f;
     public float randomX, randomY;
     public Vector2 lastVeloctiy;
-    public Transform itemA;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class Item_D : MonoBehaviour
         #region Player Collision
         if (collision.gameObject.name == "Player")
         {
-            PlayerController.modeTrigger = true;
+            Item_Shield.activeCountdown += 5;
             gameObject.SetActive(false);
         }
         #endregion

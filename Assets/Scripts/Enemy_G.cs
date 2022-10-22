@@ -10,6 +10,19 @@ public class Enemy_G : MonoBehaviour
     [SerializeField]
     float moveSpeed = 3f;
 
+    bool canMove;
+    CircleCollider2D col;
+
+    void Awake()
+    {
+        col = gameObject.GetComponent<CircleCollider2D>();
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(Delay());
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,7 +31,20 @@ public class Enemy_G : MonoBehaviour
 
     void Update()
     {
-        FollowTarget();
+        if(canMove)
+        {
+            FollowTarget();
+        }
+    }
+
+    IEnumerator Delay()
+    {
+        canMove = false;
+        col.enabled = false;
+
+        yield return new WaitForSeconds(1.0f);
+        col.enabled = true;
+        canMove = true;
     }
 
     void FollowTarget()
@@ -28,7 +54,7 @@ public class Enemy_G : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (canMove && collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
         }

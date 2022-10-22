@@ -19,6 +19,7 @@ public class Item_HMissile : MonoBehaviour
     private Collider2D[] results;
     private Collider2D[] ETargets;
 
+    public GameObject DefaultTarget;
 
     public int cnt = 0;
 
@@ -41,11 +42,10 @@ public class Item_HMissile : MonoBehaviour
 
         // 타겟이 없거나 || 플레이어로 지정 되어있거나(디폴트값) || 타겟이 비활성화 상태(오브젝트풀링)인 적일 경우 새로 검사
         //
-        if (target == null || target == GameObject.FindGameObjectWithTag("Player").transform || target.gameObject.activeSelf == false)
+        if (target == null || target == DefaultTarget.transform || target.gameObject.activeSelf == false)
         {
             SearchEnemy();
         }
-
     }
 
     // 화면 지정 범위내에 적 검색하는 함수
@@ -77,7 +77,7 @@ public class Item_HMissile : MonoBehaviour
         // 카운트가 없을 경우 플레이어를 지정함
         else
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = DefaultTarget.transform;
         }
 
         cnt = 0;

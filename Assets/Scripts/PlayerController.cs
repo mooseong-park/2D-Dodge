@@ -5,21 +5,19 @@ using static UnityEditor.Progress;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField]
     private float moveSpeed = 5f;
     private float rotationSpeed = 720f;
 
-    SpriteRenderer sr;
     public Rigidbody2D rigid;
     public Transform player;
 
     public Vector2 movementDir;
     public Vector2 LimitMin, LimitMax;
 
+    public bool ShieldTrigger;
 
     public static bool modeTrigger = false;
-
 
     private static PlayerController _instance;
     public static PlayerController getInstance
@@ -51,19 +49,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    void Start()
-    {
-        sr = gameObject.GetComponent<SpriteRenderer>();
-    }
-
     void Update()
     {
         Move();
-        if(modeTrigger == true)
-        {
-            StartCoroutine(ModeChange());
-        }
     }
 
     public void Move()
@@ -98,18 +86,9 @@ public class PlayerController : MonoBehaviour
                                          Mathf.Clamp(transform.position.y, LimitMin.y, LimitMax.y));
     }
 
-
-    IEnumerator ModeChange()
-    {
-        sr.material.color = Color.green;
-        yield return new WaitForSeconds(3.0f);
-        sr.material.color = Color.white;
-        modeTrigger = false;
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && !modeTrigger)
+        if (collision.gameObject.tag == "Enemy")
         {
             gameObject.SetActive(false);
             GameController.instance.EndGame();

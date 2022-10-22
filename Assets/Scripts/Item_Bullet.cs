@@ -28,8 +28,6 @@ public class Item_Bullet : MonoBehaviour
 
     void Fire()
     {
-          
-
         if (movDir != Vector2.zero)
         {
             rigid.velocity = movDir.normalized * bulletSpeed;

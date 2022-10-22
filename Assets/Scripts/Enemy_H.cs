@@ -9,11 +9,17 @@ public class Enemy_H : MonoBehaviour
         RIGHT,
         LEFT,
     }
-
+    bool canMove;
     ESpanwPosition sp;
+    CircleCollider2D col;
 
     [SerializeField]
     float moveSpeed = 3f;
+
+    void Awake()
+    {
+        col = gameObject.GetComponent<CircleCollider2D>();
+    }
 
     void OnEnable()
     {
@@ -26,23 +32,42 @@ public class Enemy_H : MonoBehaviour
         {
             sp = ESpanwPosition.RIGHT;
         }
+        StartCoroutine(Delay());
     }
 
     void Update()
     {
-        switch (sp)
+        Move();
+    }
+
+    void Move()
+    {
+        if(canMove)
         {
-            case ESpanwPosition.RIGHT:
-                {
-                    MoveLeft();
-                    break;
-                }
-            case ESpanwPosition.LEFT:
-                {
-                    MoveRight();
-                    break;
-                }
+            switch (sp)
+            {
+                case ESpanwPosition.RIGHT:
+                    {
+                        MoveLeft();
+                        break;
+                    }
+                case ESpanwPosition.LEFT:
+                    {
+                        MoveRight();
+                        break;
+                    }
+            }
         }
+    }
+
+    IEnumerator Delay()
+    {
+        canMove = false;
+        col.enabled = false;
+
+        yield return new WaitForSeconds(1.0f);
+        col.enabled = true;
+        canMove = true;
     }
 
     void MoveRight()
@@ -57,15 +82,18 @@ public class Enemy_H : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
+        if(canMove)
         {
-            gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 
     void OnDisable()
     {
         ObjectPooler.ReturnToPool(gameObject);    // 한 객체에 한번만 
-        CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
+        CancelInvoke();    // Monobehaviour에 Invoke가 있다면
     }
 }

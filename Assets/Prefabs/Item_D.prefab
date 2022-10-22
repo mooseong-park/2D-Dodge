@@ -139,4 +139,4 @@ MonoBehaviour:
   randomX: 0
   randomY: 0
   lastVeloctiy: {x: 0, y: 0}
-  itemA: {fileID: 0}
+  player: {fileID: 1285273866882495237, guid: eb2356c217df14785b8a7b41dde536af, type: 3}

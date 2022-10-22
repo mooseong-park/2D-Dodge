@@ -16,6 +16,14 @@ public class Enemy_V : MonoBehaviour
     [SerializeField]
     float moveSpeed = 3f;
 
+    bool canMove;
+    CircleCollider2D col;
+
+    void Awake()
+    {
+        col = gameObject.GetComponent<CircleCollider2D>();
+    }
+
     void OnEnable()
     {
         if (transform.position.y < 0)
@@ -27,9 +35,18 @@ public class Enemy_V : MonoBehaviour
         {
             sp = ESpanwPosition.TOP;
         }
+        StartCoroutine(Delay());
     }
 
     void Update()
+    {
+        if(canMove)
+        {
+            Move();
+        }
+    }
+
+    void Move()
     {
         switch (sp)
         {
@@ -46,6 +63,16 @@ public class Enemy_V : MonoBehaviour
         }
     }
 
+    IEnumerator Delay()
+    {
+        canMove = false;
+        col.enabled = false;
+
+        yield return new WaitForSeconds(1.0f);
+        col.enabled = true;
+        canMove = true;
+    }
+
     void MoveUp()
     {
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
@@ -58,9 +85,12 @@ public class Enemy_V : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
+        if(canMove)
         {
-            gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall"))
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 

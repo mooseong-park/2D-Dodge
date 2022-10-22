@@ -119,10 +119,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rotateSpeed: 200
+  rotateSpeed: 1000
   target: {fileID: 0}
   top_right_corner: {x: 9.5, y: 3.5}
   bottom_left_corner: {x: -9.5, y: -3.5}
+  DefaultTarget: {fileID: 3862944776851739261, guid: 73867074594b7480bae92035bd5320b3, type: 3}
   cnt: 0
 --- !u!58 &9137716571345785258
 CircleCollider2D:
