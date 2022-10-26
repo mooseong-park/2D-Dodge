@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    public GameObject spawner;
+    public GameObject spawner, player;
     public GameObject hudContainer, gameOverPanel;
     public Text timeCounter;
     public bool gamePlaying { get; private set; }
@@ -90,6 +90,7 @@ public class GameController : MonoBehaviour
     IEnumerator SpawnStart()
     {
         yield return new WaitForSeconds(1f);
+        player.SetActive(true);
         spawner.SetActive(true);
     }
 }
