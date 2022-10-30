@@ -3,17 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy_P
+  - Enemy
+  - Wall
+  - Item_Effect
+  - Item_C
+  - Border
+  - Super
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Item
+  - Item_Effect
+  - PostProcessing
   - 
   - 
   - 
